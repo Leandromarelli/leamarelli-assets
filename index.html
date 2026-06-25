@@ -39,6 +39,29 @@
 
     .page { max-width: 480px; margin: 0 auto; }
 
+    @media (min-width: 768px) {
+      .page { max-width: 720px; }
+      .hero { padding: 3rem 2rem; }
+      .h1 { font-size: 3.8rem; }
+      .sec { padding: 2.5rem 2rem; }
+      .proof-section { padding: 2.5rem 2rem; }
+      .logo-wrap { padding: 2.5rem 2rem 0; }
+      .logo-img { max-width: 480px; }
+      .div { margin: 0 2rem; }
+      .get-list { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+      .proof-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; }
+      .price-block { max-width: 480px; }
+      .footer { padding: 3rem 2rem 4rem; }
+    }
+
+    @media (min-width: 1024px) {
+      .page { max-width: 860px; }
+      .h1 { font-size: 4.5rem; }
+      .hero-sub { font-size: 17px; max-width: 600px; }
+      .cta-btn { max-width: 420px; }
+      .logo-img { max-width: 560px; }
+    }
+
     /* ── LOGO ── */
     .logo-wrap { padding: 2rem 1.5rem 0; }
     .logo-img { width: 100%; max-width: 360px; height: auto; display: block; }
