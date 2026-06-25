@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Diagnóstico Nítido 1:1 con Lea Marelli — En una hora definimos hacia dónde tenés que ir. Sistema POTE.">
+  <title>Diagnóstico Nítido 1:1 — Lea Marelli</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0a0a;
+      --bg2: #111110;
+      --border: #1e1e1c;
+      --border2: #2a2a2a;
+      --text: #f0ece4;
+      --text2: #a09890;
+      --muted: #5a5a58;
+      --accent: #c8f07a;
+      --accent-dark: #4a7a1a;
+      --green-bg: #0f180a;
+      --green-border: #2a3a1a;
+      --green-text: #8ab06a;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .page { max-width: 480px; margin: 0 auto; }
+
+    /* ── LOGO ── */
+    .logo-wrap { padding: 2rem 1.5rem 0; }
+    .logo-img { width: 100%; max-width: 360px; height: auto; display: block; }
+
+    /* ── HERO ── */
+    .hero { padding: 2rem 1.5rem; }
+    .eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+    .h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.2rem, 7vw, 3rem);
+      letter-spacing: 0.03em;
+      color: var(--text);
+      line-height: 0.95;
+      margin-bottom: 1.25rem;
+    }
+    .h1 .acc { color: var(--accent); }
+    .hero-sub {
+      font-size: 15px;
+      color: var(--text2);
+      line-height: 1.7;
+      margin-bottom: 2rem;
+    }
+
+    /* ── CTA BUTTON ── */
+    .cta-btn {
+      display: block;
+      width: 100%;
+      background: var(--accent);
+      color: var(--bg);
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      padding: 1rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      transition: background 0.15s ease;
+    }
+    .cta-btn:hover { background: #d9f89e; }
+    .price-note {
+      font-size: 12px;
+      color: #4a4a48;
+      text-align: center;
+      margin-top: 0.65rem;
+    }
+
+    /* ── DIVIDER ── */
+    .div { border: none; border-top: 0.5px solid var(--border); margin: 0 1.5rem; }
+
+    /* ── PROOF SECTION ── */
+    .proof-section { padding: 2rem 1.5rem; }
+    .sec-lbl {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: #3a3a38;
+      margin-bottom: 1rem;
+    }
+    .proof-grid { display: flex; flex-direction: column; gap: 0.75rem; }
+    .proof-card {
+      border: 0.5px solid var(--border2);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .proof-card img {
+      width: 100%;
+      display: block;
+      border-radius: 8px;
+    }
+    .proof-note {
+      font-size: 13px;
+      color: var(--muted);
+      text-align: center;
+      margin-top: 0.75rem;
+      line-height: 1.6;
+    }
+
+    /* ── SECTIONS ── */
+    .sec { padding: 2rem 1.5rem; }
+    .h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(1.6rem, 5vw, 2rem);
+      letter-spacing: 0.04em;
+      color: var(--text);
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+    .body-text {
+      font-size: 15px;
+      color: var(--text2);
+      line-height: 1.7;
+    }
+
+    /* ── PAIN LIST ── */
+    .pain-list { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; margin-top: 1rem; }
+    .pain-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      font-size: 15px;
+      color: var(--text2);
+    }
+    .pain-list li::before { content: "—"; color: var(--accent); flex-shrink: 0; }
+
+    /* ── GET LIST ── */
+    .get-list { list-style: none; display: flex; flex-direction: column; gap: 1rem; margin-top: 1rem; }
+    .get-list li {
+      background: var(--bg2);
+      border: 0.5px solid var(--border2);
+      border-radius: 8px;
+      padding: 1rem 1.1rem;
+      font-size: 14px;
+      color: #c4bfb8;
+      line-height: 1.55;
+    }
+    .get-list li strong {
+      display: block;
+      color: var(--text);
+      font-weight: 500;
+      font-size: 15px;
+      margin-bottom: 0.25rem;
+    }
+
+    /* ── STEPS ── */
+    .steps { display: flex; flex-direction: column; margin-top: 1.25rem; }
+    .step { display: flex; gap: 1rem; padding-bottom: 1.5rem; position: relative; }
+    .step:not(:last-child)::before {
+      content: '';
+      position: absolute;
+      left: 16px;
+      top: 33px;
+      bottom: 0;
+      width: 0.5px;
+      background: var(--border2);
+    }
+    .step-num {
+      width: 33px;
+      height: 33px;
+      border-radius: 50%;
+      background: #1a1a18;
+      border: 0.5px solid var(--border2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 14px;
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+    .step-t { font-size: 15px; font-weight: 500; color: var(--text); margin-bottom: 0.2rem; }
+    .step-d { font-size: 14px; color: var(--muted); line-height: 1.55; }
+
+    /* ── FOR WHOM ── */
+    .fw-block {
+      background: var(--bg2);
+      border: 0.5px solid var(--border2);
+      border-radius: 10px;
+      padding: 1.25rem;
+      margin-top: 1rem;
+    }
+    .fw-lbl {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.14em;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+    .fw-list { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .fw-list li {
+      font-size: 14px;
+      color: var(--text2);
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+    }
+    .fw-list li::before { content: "✓"; color: var(--accent); flex-shrink: 0; }
+
+    /* ── PRICE ── */
+    .price-block {
+      background: var(--bg2);
+      border: 0.5px solid var(--border2);
+      border-radius: 10px;
+      padding: 1.5rem 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+    .price-amt {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 4.5rem;
+      color: var(--text);
+      line-height: 1;
+      margin-bottom: 0.4rem;
+      letter-spacing: 0.02em;
+    }
+    .price-amt sup {
+      font-size: 2rem;
+      vertical-align: super;
+    }
+    .price-desc { font-size: 14px; color: var(--muted); line-height: 1.6; }
+    .price-note-box {
+      margin-top: 1rem;
+      padding: 0.75rem 1rem;
+      background: var(--green-bg);
+      border: 0.5px solid var(--green-border);
+      border-radius: 6px;
+      font-size: 13px;
+      color: var(--green-text);
+      line-height: 1.55;
+    }
+
+    /* ── FAQ ── */
+    .faq-item { border-top: 0.5px solid var(--border); padding: 1rem 0; }
+    .faq-q { font-size: 15px; font-weight: 500; color: #e0dcd4; margin-bottom: 0.5rem; }
+    .faq-a { font-size: 14px; color: var(--muted); line-height: 1.6; }
+
+    /* ── FOOTER ── */
+    .footer { padding: 2.5rem 1.5rem 3.5rem; text-align: center; }
+    .footer-slogan {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4rem;
+      letter-spacing: 0.12em;
+      color: #2a2a28;
+      margin-bottom: 1.25rem;
+    }
+    .footer-sub { font-size: 12px; color: #3a3a38; margin-top: 0.75rem; }
+
+    /* ── PRIVACY / TERMS ── */
+    .legal { padding: 1.5rem; border-top: 0.5px solid var(--border); }
+    .legal p { font-size: 11px; color: #3a3a38; line-height: 1.7; }
+    .legal a { color: #5a5a58; text-decoration: underline; }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- LOGO -->
+  <div class="logo-wrap">
+    <img class="logo-img" src="Logo.png" alt="Leamarelli — El cómo no se negocia">
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <p class="eyebrow">Diagnóstico 1:1 · Sistema POTE</p>
+    <h1 class="h1">SI TU NEGOCIO DEPENDE DE PAGAR PUBLICIDAD, SOS EL MEJOR CLIENTE DE <span class="acc">FACEBOOK.</span></h1>
+    <p class="hero-sub">En una sola sesión te digo exactamente qué está fallando en tu estrategia de redes y qué tenés que hacer para que tu contenido genere ventas reales — sin anuncios.</p>
+    <a href="https://buy.stripe.com/6oUbJ0dNb6rq9oYe7443S00" class="cta-btn">Quiero mi diagnóstico — 197€</a>
+    <p class="price-note">El valor se descuenta si contratás un plan de acompañamiento</p>
+  </section>
+
+  <hr class="div">
+
+  <!-- PRUEBA SOCIAL -->
+  <section class="proof-section">
+    <p class="sec-lbl">Prueba de concepto · sin pagar publicidad</p>
+    <div class="proof-grid">
+      <div class="proof-card">
+        <img src="framed1.jpg" alt="6.1M visualizaciones en Instagram sin publicidad" loading="lazy">
+      </div>
+      <div class="proof-card">
+        <img src="framed2.jpg" alt="6.4M visualizaciones — 138K likes" loading="lazy">
+      </div>
+      <div class="proof-card">
+        <img src="framed5.jpg" alt="1M visualizaciones en TikTok sin publicidad" loading="lazy">
+      </div>
+    </div>
+    <p class="proof-note">No hace falta tener 100K seguidores para vivir de las redes.</p>
+  </section>
+
+  <hr class="div">
+
+  <!-- PROBLEMA -->
+  <section class="sec">
+    <p class="sec-lbl">El problema real</p>
+    <h2 class="h2">TARDÁS HORAS EN PUBLICAR Y REZÁS PARA QUE ALGUIEN REACCIONE</h2>
+    <ul class="pain-list">
+      <li>Quizás sepas o creas saber quién es tu cliente pero no sabés cómo hablarle</li>
+      <li>Qué es lo que necesita esa persona y cómo podés ayudarlo</li>
+      <li>Tenés ideas pero no sabés cómo bajarlas a tierra</li>
+      <li>Pagás publicidad porque sino tu contenido se pierde automáticamente</li>
+    </ul>
+  </section>
+
+  <hr class="div">
+
+  <!-- QUÉ ES -->
+  <section class="sec">
+    <p class="sec-lbl">Qué es el diagnóstico nítido</p>
+    <h2 class="h2">EN UNA HORA CONMIGO DEFINIMOS HACIA DÓNDE TENÉS QUE IR.</h2>
+    <p class="body-text" style="margin-bottom:1.25rem;">Antes de la sesión, analizamos tu cuenta con el equipo y hacemos un diagnóstico específico para tu caso.</p>
+    <ul class="get-list">
+      <li><strong>Auditoría de tu presencia digital</strong>Últimos 9 posts, métricas, alcance, crecimiento — qué está fallando y por qué</li>
+      <li><strong>Análisis de tu negocio y tu mercado</strong>A quién le hablás y cómo lo hacés</li>
+      <li><strong>Plan de acción concreto</strong>Las 3 cosas que tenés que cambiar para que tu contenido empiece a generar ventas</li>
+      <li><strong>Recomendación de sistema</strong>Qué herramientas usar y qué automatizar según el tipo de contenido que funciona para tu negocio</li>
+    </ul>
+  </section>
+
+  <hr class="div">
+
+  <!-- PASOS -->
+  <section class="sec">
+    <p class="sec-lbl">Cómo funciona</p>
+    <h2 class="h2">CUATRO PASOS</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div>
+          <p class="step-t">Reservás la sesión</p>
+          <p class="step-d">Completás el pago y recibís el formulario de onboarding con los datos que necesito para preparar el análisis</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div>
+          <p class="step-t">Análisis previo (7 días)</p>
+          <p class="step-d">Revisamos tu cuenta, tu contenido, tu audiencia y tu competencia antes de que nos juntemos</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div>
+          <p class="step-t">Sesión 1:1 (60 min)</p>
+          <p class="step-d">Te presentamos el diagnóstico completo, los puntos de falla y el plan de acción específico para tu negocio</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div>
+          <p class="step-t">Decisión tuya</p>
+          <p class="step-d">Si querés seguir con un plan de acompañamiento, los 197€ se descuentan del valor total</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="div">
+
+  <!-- PARA QUIÉN -->
+  <section class="sec">
+    <p class="sec-lbl">Para quién es</p>
+    <div class="fw-block">
+      <p class="fw-lbl">Para vos si</p>
+      <ul class="fw-list">
+        <li>Tenés un negocio o servicio y querés que las redes sociales te generen clientes reales</li>
+        <li>Estás publicando pero no ves conversión real en ventas</li>
+        <li>Querés dejar de depender de anuncios pagos</li>
+      </ul>
+    </div>
+  </section>
+
+  <hr class="div">
+
+  <!-- PRECIO -->
+  <section class="sec">
+    <p class="sec-lbl">Inversión</p>
+    <div class="price-block">
+      <p class="price-amt"><sup>€</sup>197</p>
+      <p class="price-desc">Sesión única de 60 minutos + una semana de análisis previo. Una sola venta de tu negocio cubre esto con holgura.</p>
+      <div class="price-note-box">Si después del diagnóstico decidís contratar un plan de acompañamiento, los 197€ se descuentan del precio total. La sesión no es un gasto — es el primer paso del sistema.</div>
+    </div>
+    <a href="https://buy.stripe.com/6oUbJ0dNb6rq9oYe7443S00" class="cta-btn">Reservar mi diagnóstico — 197€</a>
+    <p class="price-note" style="margin-top:0.65rem;">Cupos limitados por semana</p>
+  </section>
+
+  <hr class="div">
+
+  <!-- FAQ -->
+  <section class="sec">
+    <p class="sec-lbl">Preguntas frecuentes</p>
+    <div class="faq-item">
+      <p class="faq-q">¿Qué pasa si arranco de cero seguidores?</p>
+      <p class="faq-a">No hay ningún problema. Es recomendable crear una cuenta nueva si en la tuya has pagado publicidad. Con el contenido correcto, la cuenta crece.</p>
+    </div>
+    <div class="faq-item">
+      <p class="faq-q">¿Tengo que contratar el acompañamiento después?</p>
+      <p class="faq-a">No. El diagnóstico es un producto en sí mismo. Te vas con un plan de acción que podés ejecutar solo. Si al final querés seguir trabajando juntos, los 197€ se descuentan.</p>
+    </div>
+    <div class="faq-item">
+      <p class="faq-q">¿Funciona para negocios fuera de España?</p>
+      <p class="faq-a">Sí, la sesión es por videollamada. Ya trabajo con clientes en Latinoamérica y resto de Europa.</p>
+    </div>
+    <div class="faq-item">
+      <p class="faq-q">¿En cuánto tiempo veo resultados?</p>
+      <p class="faq-a">Del diagnóstico salís con claridad y un plan de acción el mismo día. Los resultados en ventas dependen de tu negocio, tu ticket y desde dónde arrancás.</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <section class="footer">
+    <p class="footer-slogan">EL CÓMO NO SE NEGOCIA</p>
+    <a href="https://buy.stripe.com/6oUbJ0dNb6rq9oYe7443S00" class="cta-btn">Quiero mi diagnóstico — 197€</a>
+    <p class="footer-sub">@leamarelli · Sistema POTE</p>
+  </section>
+
+  <!-- LEGAL -->
+  <div class="legal">
+    <p>© 2025 Leamarelli. Al realizar el pago aceptás los <a href="#">términos de servicio</a> y la <a href="#">política de privacidad</a>. Los pagos son procesados de forma segura por Stripe.</p>
+  </div>
+
+</div>
+</body>
+</html>
