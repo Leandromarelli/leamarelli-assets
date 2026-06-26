@@ -27,7 +27,6 @@
     }
 
     html { scroll-behavior: smooth; }
-
     body {
       background: var(--bg);
       color: var(--text);
@@ -46,7 +45,14 @@
 
     /* ── HERO ── */
     .hero { padding: 2.5rem 1.5rem 2rem; }
-    .eyebrow { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 1rem; }
+    .eyebrow {
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      opacity: 0.7;
+      margin-bottom: 1rem;
+    }
     .h1 {
       font-family: 'Bebas Neue', sans-serif;
       font-size: clamp(2.4rem, 8vw, 3.4rem);
@@ -80,7 +86,7 @@
     .cta-btn:hover {
       background: #d9f89e;
       transform: translateY(-1px);
-      box-shadow: 0 8px 30px rgba(var(--accent-rgb), 0.25);
+      box-shadow: 0 8px 30px rgba(var(--accent-rgb), 0.28);
     }
     .cta-btn::after {
       content: '';
@@ -92,14 +98,25 @@
       animation: shimmer 3s infinite;
     }
     @keyframes shimmer { 0% { left: -75%; } 60%, 100% { left: 125%; } }
-    .price-note { font-size: 12px; color: #4a4a48; text-align: left; margin-top: 0.65rem; }
+
+    .price-note { font-size: 12px; color: #5a5a58; text-align: left; margin-top: 0.65rem; }
 
     /* ── DIVIDER ── */
     .div { border: none; border-top: 0.5px solid var(--border); margin: 0 1.5rem; }
 
+    /* ── SECTION LABELS ── */
+    .sec-lbl {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      opacity: 0.6;
+      margin-bottom: 1.25rem;
+      font-weight: 500;
+    }
+
     /* ── PROOF SECTION ── */
     .proof-section { padding: 2rem 1.5rem; }
-    .sec-lbl { font-size: 10px; text-transform: uppercase; letter-spacing: 0.14em; color: #3a3a38; margin-bottom: 1.25rem; }
 
     .proof-grid {
       display: flex;
@@ -107,7 +124,6 @@
       gap: 1.5rem;
     }
 
-    /* Card = foto + zócalo */
     .proof-card {
       border-radius: 12px;
       overflow: hidden;
@@ -121,7 +137,6 @@
       transform: translateY(-4px) rotateX(1.5deg) rotateY(-1deg);
     }
 
-    /* Foto con overlay de hover */
     .proof-img-wrap {
       position: relative;
       overflow: hidden;
@@ -136,21 +151,7 @@
       filter: brightness(1.08) contrast(1.04) saturate(1.1);
       transform: scale(1.025);
     }
-    /* Zona iluminada al hover — número clave */
-    .proof-highlight {
-      position: absolute;
-      border-radius: 8px;
-      background: transparent;
-      box-shadow: 0 0 0 2000px transparent;
-      pointer-events: none;
-      transition: box-shadow 0.4s ease;
-    }
-    .proof-card:hover .proof-highlight { display: none; }/* old */
-    .proof-card-DISABLED:hover .proof-highlight {
-      box-shadow: 0 0 0 2000px rgba(0,0,0,0.55), 0 0 24px 8px rgba(var(--accent-rgb), 0.25);
-    }
 
-    /* Zócalo de stats */
     .proof-socle {
       background: var(--bg2);
       padding: 1rem 1.25rem 1.1rem;
@@ -173,13 +174,7 @@
     }
     .socle-big .unit { font-size: 1.3rem; color: var(--accent); }
     .socle-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); }
-    .socle-platform {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 0.75rem;
-      letter-spacing: 0.14em;
-      color: var(--accent);
-      opacity: 0.7;
-    }
+    .socle-platform { font-family: 'Bebas Neue', sans-serif; font-size: 0.75rem; letter-spacing: 0.14em; color: var(--accent); opacity: 0.7; }
     .socle-stats { display: flex; gap: 1.25rem; }
     .socle-stat { display: flex; flex-direction: column; gap: 2px; text-align: right; }
     .socle-stat-val {
@@ -195,21 +190,31 @@
     }
     .socle-stat-lbl { font-size: 9px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
 
-    /* Sparkline en el zócalo */
     .socle-spark { opacity: 0.3; transition: opacity 0.3s ease; margin-left: auto; }
     .proof-card:hover .socle-spark { opacity: 0.7; }
     .spark-path { fill: none; stroke: var(--accent); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
     .spark-dot { fill: var(--accent); animation: pulse-dot 2s ease-in-out infinite; }
     @keyframes pulse-dot { 0%,100%{r:2.5;opacity:1} 50%{r:4;opacity:.5} }
 
-    .proof-note { font-size: 13px; color: var(--muted); text-align: left; margin-top: 1rem; line-height: 1.6; cursor: default; transition: color 0.25s ease, text-shadow 0.25s ease; }
-    .proof-note:hover { color: var(--text2); text-shadow: 0 0 18px rgba(var(--accent-rgb), 0.35); }
+    .proof-note {
+      font-size: 14px;
+      color: var(--text2);
+      text-align: left;
+      margin-top: 1rem;
+      line-height: 1.6;
+      cursor: default;
+      transition: color 0.25s ease, text-shadow 0.25s ease;
+    }
+    .proof-note:hover {
+      color: var(--text);
+      text-shadow: 0 0 18px rgba(var(--accent-rgb), 0.3);
+    }
 
     /* ── SECTIONS ── */
     .sec { padding: 2rem 1.5rem; }
     .h2 {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(1.7rem, 5vw, 2.1rem);
+      font-size: clamp(1.8rem, 5vw, 2.2rem);
       letter-spacing: 0.04em;
       color: var(--text);
       line-height: 1;
@@ -271,6 +276,83 @@
     .fw-list li { font-size: 14px; color: var(--text2); display: flex; align-items: flex-start; gap: 0.6rem; }
     .fw-list li::before { content: "✓"; color: var(--accent); flex-shrink: 0; }
 
+    /* ── SOBRE MÍ ── */
+    .about-section { padding: 2rem 1.5rem; }
+    .about-inner {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      align-items: stretch;
+    }
+    .about-photo-wrap {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 0.5px solid var(--border2);
+      width: 100%;
+      max-width: 320px;
+      margin: 0 auto;
+      flex-shrink: 0;
+      align-self: flex-start;
+    }
+    .about-photo-wrap img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+    .about-photo-wrap:hover img { transform: scale(1.02); }
+    .about-photo-wrap::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 35%;
+      background: linear-gradient(to top, var(--bg2), transparent);
+      pointer-events: none;
+    }
+    .about-content { display: flex; flex-direction: column; gap: 1rem; }
+    .about-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      letter-spacing: 0.05em;
+      color: var(--text);
+      line-height: 1;
+    }
+    .about-name .acc { color: var(--accent); }
+    .about-bio { font-size: 15px; color: var(--text2); line-height: 1.75; }
+    .about-credentials {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-top: 0.25rem;
+    }
+    .cred-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .cred-item::before { content: "·"; color: var(--accent); flex-shrink: 0; font-size: 1rem; line-height: 1.3; }
+    .about-stat-row {
+      display: flex;
+      gap: 1rem;
+      padding: 1rem;
+      background: var(--bg2);
+      border: 0.5px solid var(--border2);
+      border-radius: 8px;
+      margin-top: 0.5rem;
+    }
+    .about-stat { display: flex; flex-direction: column; gap: 2px; flex: 1; }
+    .about-stat-val {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.6rem;
+      color: var(--accent);
+      letter-spacing: 0.04em;
+      line-height: 1;
+    }
+    .about-stat-lbl { font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+
     /* ── PRICE ── */
     .price-block { background: var(--bg2); border: 0.5px solid var(--border2); border-radius: 10px; padding: 1.5rem 1.25rem; margin-bottom: 1.5rem; }
     .price-amt { font-family: 'Bebas Neue', sans-serif; font-size: 4.5rem; color: var(--text); line-height: 1; margin-bottom: 0.4rem; letter-spacing: 0.02em; }
@@ -299,17 +381,20 @@
 
     /* ── DESKTOP ── */
     @media (min-width: 768px) {
-      .page { max-width: 860px; }
+      .page { max-width: 880px; }
       .logo-wrap { justify-content: flex-start; padding: 3rem 2rem 0; }
       .logo-img { max-width: 400px; }
       .hero { padding: 3rem 2rem; }
       .h1 { font-size: 4.2rem; }
       .sec { padding: 2.5rem 2rem; }
       .proof-section { padding: 2.5rem 2rem; }
+      .about-section { padding: 2.5rem 2rem; }
       .div { margin: 0 2rem; }
       .proof-grid { flex-direction: row; gap: 1.25rem; align-items: stretch; }
       .proof-card { flex: 1; }
       .get-list { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+      .about-inner { flex-direction: row; align-items: flex-start; gap: 2.5rem; }
+      .about-photo-wrap { max-width: 280px; flex-shrink: 0; margin: 0; align-self: flex-start; }
       .cta-btn { max-width: 400px; }
     }
     @media (min-width: 1024px) {
@@ -348,30 +433,19 @@
     <p class="sec-lbl">Prueba de concepto · sin pagar publicidad</p>
     <div class="proof-grid">
 
-      <!-- Card 1 — Instagram 6.1M -->
       <div class="proof-card">
         <div class="proof-img-wrap">
           <img src="framed1.jpg" alt="6.1M visualizaciones en Instagram" loading="lazy">
-          <!-- highlight zona del número central -->
-          <div class="proof-highlight" style="top:8%;left:20%;width:60%;height:50%;border-radius:50%;"></div>
         </div>
         <div class="proof-socle">
           <div class="socle-main">
             <div class="socle-platform">Instagram</div>
-            <div class="socle-big">
-              <span class="counter" data-target="6.1" data-decimals="1">0</span><span class="unit">M</span>
-            </div>
+            <div class="socle-big"><span class="counter" data-target="6.1" data-decimals="1">0</span><span class="unit">M</span></div>
             <div class="socle-label">Visualizaciones</div>
           </div>
           <div class="socle-stats">
-            <div class="socle-stat">
-              <span class="socle-stat-val">99.7%</span>
-              <span class="socle-stat-lbl">No seguidores</span>
-            </div>
-            <div class="socle-stat">
-              <span class="socle-stat-val">3.5M</span>
-              <span class="socle-stat-lbl">Alcanzadas</span>
-            </div>
+            <div class="socle-stat"><span class="socle-stat-val">99.7%</span><span class="socle-stat-lbl">No seguidores</span></div>
+            <div class="socle-stat"><span class="socle-stat-val">3.5M</span><span class="socle-stat-lbl">Alcanzadas</span></div>
           </div>
           <svg class="socle-spark" width="60" height="32" viewBox="0 0 60 32" overflow="visible">
             <polyline class="spark-path" points="0,30 8,24 16,20 24,14 32,18 40,8 50,4 60,1"/>
@@ -380,30 +454,19 @@
         </div>
       </div>
 
-      <!-- Card 2 — Instagram 6.4M -->
       <div class="proof-card">
         <div class="proof-img-wrap">
           <img src="framed2.jpg" alt="6.4M visualizaciones — 138K likes" loading="lazy">
-          <!-- highlight zona stats (parte inferior de la imagen) -->
-          <div class="proof-highlight" style="bottom:0;left:0;width:100%;height:40%;border-radius:0;"></div>
         </div>
         <div class="proof-socle">
           <div class="socle-main">
             <div class="socle-platform">Instagram · Viral</div>
-            <div class="socle-big">
-              <span class="counter" data-target="6.4" data-decimals="1">0</span><span class="unit">M</span>
-            </div>
+            <div class="socle-big"><span class="counter" data-target="6.4" data-decimals="1">0</span><span class="unit">M</span></div>
             <div class="socle-label">Visualizaciones</div>
           </div>
           <div class="socle-stats">
-            <div class="socle-stat">
-              <span class="socle-stat-val">138K</span>
-              <span class="socle-stat-lbl">Likes</span>
-            </div>
-            <div class="socle-stat">
-              <span class="socle-stat-val">25K</span>
-              <span class="socle-stat-lbl">Guardados</span>
-            </div>
+            <div class="socle-stat"><span class="socle-stat-val">138K</span><span class="socle-stat-lbl">Likes</span></div>
+            <div class="socle-stat"><span class="socle-stat-val">25K</span><span class="socle-stat-lbl">Guardados</span></div>
           </div>
           <svg class="socle-spark" width="60" height="32" viewBox="0 0 60 32" overflow="visible">
             <polyline class="spark-path" points="0,28 8,22 16,24 24,14 32,16 40,6 50,3 60,1"/>
@@ -412,30 +475,19 @@
         </div>
       </div>
 
-      <!-- Card 3 — TikTok 1M -->
       <div class="proof-card">
         <div class="proof-img-wrap">
           <img src="framed5.jpg" alt="1M visualizaciones en TikTok" loading="lazy">
-          <!-- highlight zona metrics clave -->
-          <div class="proof-highlight" style="top:38%;left:5%;width:55%;height:22%;border-radius:8px;"></div>
         </div>
         <div class="proof-socle">
           <div class="socle-main">
             <div class="socle-platform">TikTok</div>
-            <div class="socle-big">
-              <span class="counter" data-target="1" data-decimals="0">0</span><span class="unit">M</span>
-            </div>
+            <div class="socle-big"><span class="counter" data-target="1" data-decimals="0">0</span><span class="unit">M</span></div>
             <div class="socle-label">Visualizaciones</div>
           </div>
           <div class="socle-stats">
-            <div class="socle-stat">
-              <span class="socle-stat-val">18K</span>
-              <span class="socle-stat-lbl">Likes</span>
-            </div>
-            <div class="socle-stat">
-              <span class="socle-stat-val">32%</span>
-              <span class="socle-stat-lbl">Completaron</span>
-            </div>
+            <div class="socle-stat"><span class="socle-stat-val">18K</span><span class="socle-stat-lbl">Likes</span></div>
+            <div class="socle-stat"><span class="socle-stat-val">32%</span><span class="socle-stat-lbl">Completaron</span></div>
           </div>
           <svg class="socle-spark" width="60" height="32" viewBox="0 0 60 32" overflow="visible">
             <polyline class="spark-path" points="0,30 8,26 16,22 24,18 32,16 40,12 50,7 60,4"/>
@@ -445,7 +497,7 @@
       </div>
 
     </div>
-    <p class="proof-note">No hace falta tener 100K seguidores para vivir de las redes.</p>
+    <p class="proof-note">No hace falta tener 100K seguidores para vivir de las redes — hace falta saber qué publicar.</p>
   </section>
 
   <hr class="div">
@@ -455,10 +507,10 @@
     <p class="sec-lbl">El problema real</p>
     <h2 class="h2">TARDÁS HORAS EN PUBLICAR Y REZÁS PARA QUE ALGUIEN REACCIONE</h2>
     <ul class="pain-list">
-      <li>Quizás sepas o creas saber quién es tu cliente pero no sabés cómo hablarle</li>
-      <li>Qué es lo que necesita esa persona y cómo podés ayudarlo</li>
-      <li>Tenés ideas pero no sabés cómo bajarlas a tierra</li>
-      <li>Pagás publicidad porque sino tu contenido se pierde automáticamente</li>
+      <li>Quizás sepas quién es tu cliente pero no sabés cómo hablarle para que te compre</li>
+      <li>Tenés ideas pero no sabés cómo convertirlas en contenido que genere ventas</li>
+      <li>Pagás publicidad porque sin ella tu contenido no llega a nadie</li>
+      <li>Publicás sin sistema y los resultados dependen de la suerte, no de la estrategia</li>
     </ul>
   </section>
 
@@ -472,8 +524,8 @@
     <ul class="get-list">
       <li><strong>Auditoría de tu presencia digital</strong>Últimos 9 posts, métricas, alcance, crecimiento — qué está fallando y por qué</li>
       <li><strong>Análisis de tu negocio y tu mercado</strong>A quién le hablás y cómo lo hacés</li>
-      <li><strong>Plan de acción concreto</strong>Las 3 cosas que tenés que cambiar para que tu contenido empiece a generar ventas</li>
-      <li><strong>Recomendación de sistema</strong>Qué herramientas usar y qué automatizar según el tipo de contenido que funciona para tu negocio</li>
+      <li><strong>Plan de acción concreto</strong>Las 3 cosas exactas que tenés que cambiar para que tu contenido empiece a generar ventas</li>
+      <li><strong>Recomendación de sistema</strong>Qué herramientas usar y qué automatizar según tu tipo de negocio</li>
     </ul>
   </section>
 
@@ -532,6 +584,43 @@
 
   <hr class="div">
 
+  <!-- SOBRE MÍ -->
+  <section class="about-section reveal">
+    <p class="sec-lbl">Quién está detrás del diagnóstico</p>
+    <div class="about-inner">
+      <div class="about-photo-wrap">
+        <img src="perfil.png" alt="Lea Marelli — @leamarelli" loading="lazy">
+      </div>
+      <div class="about-content">
+        <div class="about-name">LEA<span class="acc">M</span>ARELLI</div>
+        <p class="about-bio">Soy Licenciado en Administración con especialización en marketing y marca personal. Estudié en la UNLP y durante años trabajé como closer especialista en ventas High Ticket — el tipo de venta donde entender al cliente no es opcional, es todo.</p>
+        <p class="about-bio">Esa combinación — formación académica más experiencia directa en el cierre — es lo que uso para analizar tu negocio y darte un diagnóstico que no es genérico. Es específico para tu caso, tu audiencia y tu producto.</p>
+        <div class="about-credentials">
+          <div class="cred-item">Licenciado en Administración · UNLP, Argentina</div>
+          <div class="cred-item">Especialización en Marketing y Marca Personal</div>
+          <div class="cred-item">Closer especialista en High Ticket</div>
+          <div class="cred-item">Creador del Sistema POTE</div>
+        </div>
+        <div class="about-stat-row">
+          <div class="about-stat">
+            <span class="about-stat-val">+2.7M€</span>
+            <span class="about-stat-lbl">Facturado para clientes</span>
+          </div>
+          <div class="about-stat">
+            
+            
+          </div>
+          <div class="about-stat">
+            <span class="about-stat-val">0€</span>
+            <span class="about-stat-lbl">En publicidad</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="div">
+
   <!-- PRECIO -->
   <section class="sec reveal">
     <p class="sec-lbl">Inversión</p>
@@ -582,7 +671,6 @@
 </div>
 
 <script>
-  // ── Contador animado al hacer scroll ──
   function animateCounter(el) {
     const target = parseFloat(el.dataset.target);
     const decimals = parseInt(el.dataset.decimals) || 0;
@@ -599,7 +687,6 @@
     requestAnimationFrame(step);
   }
 
-  // ── Scroll reveal ──
   const reveals = document.querySelectorAll('.reveal');
   let countersTriggered = false;
 
@@ -617,7 +704,6 @@
 
   reveals.forEach(el => observer.observe(el));
 
-  // ── 3D tilt en cards ──
   document.querySelectorAll('.proof-card').forEach(card => {
     card.addEventListener('mousemove', e => {
       const rect = card.getBoundingClientRect();
