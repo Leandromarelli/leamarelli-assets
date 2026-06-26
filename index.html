@@ -20,7 +20,7 @@
       --text2: #a09890;
       --muted: #5a5a58;
       --accent: #c8f07a;
-      --accent-dark: #4a7a1a;
+      --accent-rgb: 200, 240, 122;
       --green-bg: #0f180a;
       --green-border: #2a3a1a;
       --green-text: #8ab06a;
@@ -35,63 +35,30 @@
       font-size: 16px;
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
 
-    .page { max-width: 480px; margin: 0 auto; }
-
-    @media (min-width: 768px) {
-      .page { max-width: 720px; }
-      .hero { padding: 3rem 2rem; }
-      .h1 { font-size: 3.8rem; }
-      .sec { padding: 2.5rem 2rem; }
-      .proof-section { padding: 2.5rem 2rem; }
-      .logo-wrap { padding: 2.5rem 2rem 0; }
-      .logo-img { max-width: 480px; }
-      .div { margin: 0 2rem; }
-      .get-list { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-      .proof-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; }
-      .price-block { max-width: 480px; }
-      .footer { padding: 3rem 2rem 4rem; }
-    }
-
-    @media (min-width: 1024px) {
-      .page { max-width: 860px; }
-      .h1 { font-size: 4.5rem; }
-      .hero-sub { font-size: 17px; max-width: 600px; }
-      .cta-btn { max-width: 420px; }
-      .logo-img { max-width: 560px; }
-    }
+    .page { max-width: 540px; margin: 0 auto; }
 
     /* ── LOGO ── */
-    .logo-wrap { padding: 2rem 1.5rem 0; }
-    .logo-img { width: 100%; max-width: 360px; height: auto; display: block; }
+    .logo-wrap { padding: 2.5rem 1.5rem 0; display: flex; justify-content: center; }
+    .logo-img { width: 100%; max-width: 340px; height: auto; display: block; }
 
     /* ── HERO ── */
-    .hero { padding: 2rem 1.5rem; }
-    .eyebrow {
-      font-size: 11px;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 1rem;
-    }
+    .hero { padding: 2.5rem 1.5rem 2rem; }
+    .eyebrow { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 1rem; }
     .h1 {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(2.2rem, 7vw, 3rem);
+      font-size: clamp(2.4rem, 8vw, 3.4rem);
       letter-spacing: 0.03em;
       color: var(--text);
       line-height: 0.95;
       margin-bottom: 1.25rem;
     }
     .h1 .acc { color: var(--accent); }
-    .hero-sub {
-      font-size: 15px;
-      color: var(--text2);
-      line-height: 1.7;
-      margin-bottom: 2rem;
-    }
+    .hero-sub { font-size: 15px; color: var(--text2); line-height: 1.7; margin-bottom: 2rem; }
 
-    /* ── CTA BUTTON ── */
+    /* ── CTA ── */
     .cta-btn {
       display: block;
       width: 100%;
@@ -106,72 +73,159 @@
       cursor: pointer;
       text-align: center;
       text-decoration: none;
-      transition: background 0.15s ease;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
     }
-    .cta-btn:hover { background: #d9f89e; }
-    .price-note {
-      font-size: 12px;
-      color: #4a4a48;
-      text-align: center;
-      margin-top: 0.65rem;
+    .cta-btn:hover {
+      background: #d9f89e;
+      transform: translateY(-1px);
+      box-shadow: 0 8px 30px rgba(var(--accent-rgb), 0.25);
     }
+    .cta-btn::after {
+      content: '';
+      position: absolute;
+      top: -50%; left: -75%;
+      width: 50%; height: 200%;
+      background: linear-gradient(to right, transparent, rgba(255,255,255,0.18), transparent);
+      transform: skewX(-20deg);
+      animation: shimmer 3s infinite;
+    }
+    @keyframes shimmer { 0% { left: -75%; } 60%, 100% { left: 125%; } }
+    .price-note { font-size: 12px; color: #4a4a48; text-align: center; margin-top: 0.65rem; }
 
     /* ── DIVIDER ── */
     .div { border: none; border-top: 0.5px solid var(--border); margin: 0 1.5rem; }
 
     /* ── PROOF SECTION ── */
     .proof-section { padding: 2rem 1.5rem; }
-    .sec-lbl {
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      color: #3a3a38;
-      margin-bottom: 1rem;
+    .sec-lbl { font-size: 10px; text-transform: uppercase; letter-spacing: 0.14em; color: #3a3a38; margin-bottom: 1.25rem; }
+
+    .proof-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
     }
-    .proof-grid { display: flex; flex-direction: column; gap: 0.75rem; }
+
+    /* Card = foto + zócalo */
     .proof-card {
-      border: 0.5px solid var(--border2);
-      border-radius: 8px;
+      border-radius: 12px;
       overflow: hidden;
+      border: 0.5px solid var(--border2);
+      transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s cubic-bezier(.22,.68,0,1.2);
+      transform-style: preserve-3d;
     }
-    .proof-card img {
+    .proof-card:hover {
+      border-color: rgba(var(--accent-rgb), 0.35);
+      box-shadow: 0 16px 48px rgba(var(--accent-rgb), 0.1);
+      transform: translateY(-4px) rotateX(1.5deg) rotateY(-1deg);
+    }
+
+    /* Foto con overlay de hover */
+    .proof-img-wrap {
+      position: relative;
+      overflow: hidden;
+      line-height: 0;
+    }
+    .proof-img-wrap img {
       width: 100%;
       display: block;
+      transition: filter 0.4s ease;
+    }
+    .proof-card:hover .proof-img-wrap img {
+      filter: brightness(0.6);
+    }
+    /* Zona iluminada al hover — número clave */
+    .proof-highlight {
+      position: absolute;
       border-radius: 8px;
+      background: transparent;
+      box-shadow: 0 0 0 2000px transparent;
+      pointer-events: none;
+      transition: box-shadow 0.4s ease;
     }
-    .proof-note {
-      font-size: 13px;
-      color: var(--muted);
-      text-align: center;
-      margin-top: 0.75rem;
-      line-height: 1.6;
+    .proof-card:hover .proof-highlight {
+      box-shadow: 0 0 0 2000px rgba(0,0,0,0.55), 0 0 24px 8px rgba(var(--accent-rgb), 0.25);
     }
+
+    /* Zócalo de stats */
+    .proof-socle {
+      background: var(--bg2);
+      padding: 1rem 1.25rem 1.1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      border-top: 0.5px solid var(--border2);
+    }
+    .socle-main { display: flex; flex-direction: column; gap: 1px; }
+    .socle-big {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.4rem;
+      line-height: 1;
+      letter-spacing: 0.04em;
+      color: var(--text);
+      display: flex;
+      align-items: baseline;
+      gap: 4px;
+    }
+    .socle-big .unit { font-size: 1.3rem; color: var(--accent); }
+    .socle-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); }
+    .socle-platform {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.14em;
+      color: var(--accent);
+      opacity: 0.7;
+    }
+    .socle-stats { display: flex; gap: 1.25rem; }
+    .socle-stat { display: flex; flex-direction: column; gap: 2px; text-align: right; }
+    .socle-stat-val {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.1rem;
+      color: var(--text);
+      letter-spacing: 0.04em;
+      transition: color 0.3s ease, text-shadow 0.3s ease;
+    }
+    .proof-card:hover .socle-stat-val {
+      color: var(--accent);
+      text-shadow: 0 0 10px rgba(var(--accent-rgb), 0.45);
+    }
+    .socle-stat-lbl { font-size: 9px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+
+    /* Sparkline en el zócalo */
+    .socle-spark { opacity: 0.3; transition: opacity 0.3s ease; margin-left: auto; }
+    .proof-card:hover .socle-spark { opacity: 0.7; }
+    .spark-path { fill: none; stroke: var(--accent); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+    .spark-dot { fill: var(--accent); animation: pulse-dot 2s ease-in-out infinite; }
+    @keyframes pulse-dot { 0%,100%{r:2.5;opacity:1} 50%{r:4;opacity:.5} }
+
+    .proof-note { font-size: 13px; color: var(--muted); text-align: center; margin-top: 1rem; line-height: 1.6; }
 
     /* ── SECTIONS ── */
     .sec { padding: 2rem 1.5rem; }
     .h2 {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(1.6rem, 5vw, 2rem);
+      font-size: clamp(1.7rem, 5vw, 2.1rem);
       letter-spacing: 0.04em;
       color: var(--text);
       line-height: 1;
       margin-bottom: 1rem;
     }
-    .body-text {
-      font-size: 15px;
-      color: var(--text2);
-      line-height: 1.7;
-    }
+    .body-text { font-size: 15px; color: var(--text2); line-height: 1.7; }
 
     /* ── PAIN LIST ── */
     .pain-list { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; margin-top: 1rem; }
     .pain-list li {
-      display: flex;
-      align-items: flex-start;
-      gap: 0.75rem;
-      font-size: 15px;
-      color: var(--text2);
+      display: flex; align-items: flex-start; gap: 0.75rem;
+      font-size: 15px; color: var(--text2);
+      padding: 0.75rem 1rem;
+      background: var(--bg2);
+      border: 0.5px solid var(--border);
+      border-radius: 6px;
+      transition: border-color 0.2s ease;
     }
+    .pain-list li:hover { border-color: rgba(var(--accent-rgb), 0.2); }
     .pain-list li::before { content: "—"; color: var(--accent); flex-shrink: 0; }
 
     /* ── GET LIST ── */
@@ -181,103 +235,45 @@
       border: 0.5px solid var(--border2);
       border-radius: 8px;
       padding: 1rem 1.1rem;
-      font-size: 14px;
-      color: #c4bfb8;
+      font-size: 14px; color: #c4bfb8;
       line-height: 1.55;
+      transition: border-color 0.2s ease, transform 0.2s ease;
     }
-    .get-list li strong {
-      display: block;
-      color: var(--text);
-      font-weight: 500;
-      font-size: 15px;
-      margin-bottom: 0.25rem;
-    }
+    .get-list li:hover { border-color: rgba(var(--accent-rgb), 0.25); transform: translateX(3px); }
+    .get-list li strong { display: block; color: var(--text); font-weight: 500; font-size: 15px; margin-bottom: 0.25rem; }
 
     /* ── STEPS ── */
     .steps { display: flex; flex-direction: column; margin-top: 1.25rem; }
     .step { display: flex; gap: 1rem; padding-bottom: 1.5rem; position: relative; }
     .step:not(:last-child)::before {
-      content: '';
-      position: absolute;
-      left: 16px;
-      top: 33px;
-      bottom: 0;
+      content: ''; position: absolute; left: 16px; top: 33px; bottom: 0;
       width: 0.5px;
-      background: var(--border2);
+      background: linear-gradient(to bottom, rgba(var(--accent-rgb), 0.3), transparent);
     }
     .step-num {
-      width: 33px;
-      height: 33px;
-      border-radius: 50%;
+      width: 33px; height: 33px; border-radius: 50%;
       background: #1a1a18;
-      border: 0.5px solid var(--border2);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 14px;
-      color: var(--accent);
-      flex-shrink: 0;
+      border: 0.5px solid rgba(var(--accent-rgb), 0.3);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Bebas Neue', sans-serif; font-size: 14px;
+      color: var(--accent); flex-shrink: 0;
     }
     .step-t { font-size: 15px; font-weight: 500; color: var(--text); margin-bottom: 0.2rem; }
     .step-d { font-size: 14px; color: var(--muted); line-height: 1.55; }
 
     /* ── FOR WHOM ── */
-    .fw-block {
-      background: var(--bg2);
-      border: 0.5px solid var(--border2);
-      border-radius: 10px;
-      padding: 1.25rem;
-      margin-top: 1rem;
-    }
-    .fw-lbl {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 0.85rem;
-      letter-spacing: 0.14em;
-      color: var(--accent);
-      margin-bottom: 0.75rem;
-    }
+    .fw-block { background: var(--bg2); border: 0.5px solid var(--border2); border-radius: 10px; padding: 1.25rem; margin-top: 1rem; }
+    .fw-lbl { font-family: 'Bebas Neue', sans-serif; font-size: 0.85rem; letter-spacing: 0.14em; color: var(--accent); margin-bottom: 0.75rem; }
     .fw-list { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
-    .fw-list li {
-      font-size: 14px;
-      color: var(--text2);
-      display: flex;
-      align-items: flex-start;
-      gap: 0.6rem;
-    }
+    .fw-list li { font-size: 14px; color: var(--text2); display: flex; align-items: flex-start; gap: 0.6rem; }
     .fw-list li::before { content: "✓"; color: var(--accent); flex-shrink: 0; }
 
     /* ── PRICE ── */
-    .price-block {
-      background: var(--bg2);
-      border: 0.5px solid var(--border2);
-      border-radius: 10px;
-      padding: 1.5rem 1.25rem;
-      margin-bottom: 1.5rem;
-    }
-    .price-amt {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 4.5rem;
-      color: var(--text);
-      line-height: 1;
-      margin-bottom: 0.4rem;
-      letter-spacing: 0.02em;
-    }
-    .price-amt sup {
-      font-size: 2rem;
-      vertical-align: super;
-    }
+    .price-block { background: var(--bg2); border: 0.5px solid var(--border2); border-radius: 10px; padding: 1.5rem 1.25rem; margin-bottom: 1.5rem; }
+    .price-amt { font-family: 'Bebas Neue', sans-serif; font-size: 4.5rem; color: var(--text); line-height: 1; margin-bottom: 0.4rem; letter-spacing: 0.02em; }
+    .price-amt sup { font-size: 2rem; vertical-align: super; }
     .price-desc { font-size: 14px; color: var(--muted); line-height: 1.6; }
-    .price-note-box {
-      margin-top: 1rem;
-      padding: 0.75rem 1rem;
-      background: var(--green-bg);
-      border: 0.5px solid var(--green-border);
-      border-radius: 6px;
-      font-size: 13px;
-      color: var(--green-text);
-      line-height: 1.55;
-    }
+    .price-note-box { margin-top: 1rem; padding: 0.75rem 1rem; background: var(--green-bg); border: 0.5px solid var(--green-border); border-radius: 6px; font-size: 13px; color: var(--green-text); line-height: 1.55; }
 
     /* ── FAQ ── */
     .faq-item { border-top: 0.5px solid var(--border); padding: 1rem 0; }
@@ -286,22 +282,42 @@
 
     /* ── FOOTER ── */
     .footer { padding: 2.5rem 1.5rem 3.5rem; text-align: center; }
-    .footer-slogan {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.4rem;
-      letter-spacing: 0.12em;
-      color: #2a2a28;
-      margin-bottom: 1.25rem;
-    }
+    .footer-slogan { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; letter-spacing: 0.12em; color: #2a2a28; margin-bottom: 1.25rem; }
     .footer-sub { font-size: 12px; color: #3a3a38; margin-top: 0.75rem; }
 
-    /* ── PRIVACY / TERMS ── */
+    /* ── LEGAL ── */
     .legal { padding: 1.5rem; border-top: 0.5px solid var(--border); }
     .legal p { font-size: 11px; color: #3a3a38; line-height: 1.7; }
     .legal a { color: #5a5a58; text-decoration: underline; }
 
+    /* ── SCROLL REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── DESKTOP ── */
+    @media (min-width: 768px) {
+      .page { max-width: 860px; }
+      .logo-wrap { justify-content: flex-start; padding: 3rem 2rem 0; }
+      .logo-img { max-width: 400px; }
+      .hero { padding: 3rem 2rem; }
+      .h1 { font-size: 4.2rem; }
+      .sec { padding: 2.5rem 2rem; }
+      .proof-section { padding: 2.5rem 2rem; }
+      .div { margin: 0 2rem; }
+      .proof-grid { flex-direction: row; gap: 1.25rem; align-items: stretch; }
+      .proof-card { flex: 1; }
+      .get-list { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+      .cta-btn { max-width: 400px; }
+    }
+    @media (min-width: 1024px) {
+      .page { max-width: 980px; }
+      .h1 { font-size: 4.8rem; }
+      .hero-sub { font-size: 17px; max-width: 620px; }
+      .logo-img { max-width: 460px; }
+    }
+
     @media (prefers-reduced-motion: reduce) {
-      * { transition: none !important; }
+      *, *::after { animation: none !important; transition: none !important; }
     }
   </style>
 </head>
@@ -325,18 +341,106 @@
   <hr class="div">
 
   <!-- PRUEBA SOCIAL -->
-  <section class="proof-section">
+  <section class="proof-section reveal">
     <p class="sec-lbl">Prueba de concepto · sin pagar publicidad</p>
     <div class="proof-grid">
+
+      <!-- Card 1 — Instagram 6.1M -->
       <div class="proof-card">
-        <img src="framed1.jpg" alt="6.1M visualizaciones en Instagram sin publicidad" loading="lazy">
+        <div class="proof-img-wrap">
+          <img src="framed1.jpg" alt="6.1M visualizaciones en Instagram" loading="lazy">
+          <!-- highlight zona del número central -->
+          <div class="proof-highlight" style="top:8%;left:20%;width:60%;height:50%;border-radius:50%;"></div>
+        </div>
+        <div class="proof-socle">
+          <div class="socle-main">
+            <div class="socle-platform">Instagram</div>
+            <div class="socle-big">
+              <span class="counter" data-target="6.1" data-decimals="1">0</span><span class="unit">M</span>
+            </div>
+            <div class="socle-label">Visualizaciones</div>
+          </div>
+          <div class="socle-stats">
+            <div class="socle-stat">
+              <span class="socle-stat-val">99.7%</span>
+              <span class="socle-stat-lbl">No seguidores</span>
+            </div>
+            <div class="socle-stat">
+              <span class="socle-stat-val">3.5M</span>
+              <span class="socle-stat-lbl">Alcanzadas</span>
+            </div>
+          </div>
+          <svg class="socle-spark" width="60" height="32" viewBox="0 0 60 32" overflow="visible">
+            <polyline class="spark-path" points="0,30 8,24 16,20 24,14 32,18 40,8 50,4 60,1"/>
+            <circle class="spark-dot" cx="60" cy="1" r="2.5"/>
+          </svg>
+        </div>
       </div>
+
+      <!-- Card 2 — Instagram 6.4M -->
       <div class="proof-card">
-        <img src="framed2.jpg" alt="6.4M visualizaciones — 138K likes" loading="lazy">
+        <div class="proof-img-wrap">
+          <img src="framed2.jpg" alt="6.4M visualizaciones — 138K likes" loading="lazy">
+          <!-- highlight zona stats (parte inferior de la imagen) -->
+          <div class="proof-highlight" style="bottom:0;left:0;width:100%;height:40%;border-radius:0;"></div>
+        </div>
+        <div class="proof-socle">
+          <div class="socle-main">
+            <div class="socle-platform">Instagram · Viral</div>
+            <div class="socle-big">
+              <span class="counter" data-target="6.4" data-decimals="1">0</span><span class="unit">M</span>
+            </div>
+            <div class="socle-label">Visualizaciones</div>
+          </div>
+          <div class="socle-stats">
+            <div class="socle-stat">
+              <span class="socle-stat-val">138K</span>
+              <span class="socle-stat-lbl">Likes</span>
+            </div>
+            <div class="socle-stat">
+              <span class="socle-stat-val">25K</span>
+              <span class="socle-stat-lbl">Guardados</span>
+            </div>
+          </div>
+          <svg class="socle-spark" width="60" height="32" viewBox="0 0 60 32" overflow="visible">
+            <polyline class="spark-path" points="0,28 8,22 16,24 24,14 32,16 40,6 50,3 60,1"/>
+            <circle class="spark-dot" cx="60" cy="1" r="2.5"/>
+          </svg>
+        </div>
       </div>
+
+      <!-- Card 3 — TikTok 1M -->
       <div class="proof-card">
-        <img src="framed5.jpg" alt="1M visualizaciones en TikTok sin publicidad" loading="lazy">
+        <div class="proof-img-wrap">
+          <img src="framed5.jpg" alt="1M visualizaciones en TikTok" loading="lazy">
+          <!-- highlight zona metrics clave -->
+          <div class="proof-highlight" style="top:38%;left:5%;width:55%;height:22%;border-radius:8px;"></div>
+        </div>
+        <div class="proof-socle">
+          <div class="socle-main">
+            <div class="socle-platform">TikTok</div>
+            <div class="socle-big">
+              <span class="counter" data-target="1" data-decimals="0">0</span><span class="unit">M</span>
+            </div>
+            <div class="socle-label">Visualizaciones</div>
+          </div>
+          <div class="socle-stats">
+            <div class="socle-stat">
+              <span class="socle-stat-val">18K</span>
+              <span class="socle-stat-lbl">Likes</span>
+            </div>
+            <div class="socle-stat">
+              <span class="socle-stat-val">32%</span>
+              <span class="socle-stat-lbl">Completaron</span>
+            </div>
+          </div>
+          <svg class="socle-spark" width="60" height="32" viewBox="0 0 60 32" overflow="visible">
+            <polyline class="spark-path" points="0,30 8,26 16,22 24,18 32,16 40,12 50,7 60,4"/>
+            <circle class="spark-dot" cx="60" cy="4" r="2.5"/>
+          </svg>
+        </div>
       </div>
+
     </div>
     <p class="proof-note">No hace falta tener 100K seguidores para vivir de las redes.</p>
   </section>
@@ -344,7 +448,7 @@
   <hr class="div">
 
   <!-- PROBLEMA -->
-  <section class="sec">
+  <section class="sec reveal">
     <p class="sec-lbl">El problema real</p>
     <h2 class="h2">TARDÁS HORAS EN PUBLICAR Y REZÁS PARA QUE ALGUIEN REACCIONE</h2>
     <ul class="pain-list">
@@ -358,7 +462,7 @@
   <hr class="div">
 
   <!-- QUÉ ES -->
-  <section class="sec">
+  <section class="sec reveal">
     <p class="sec-lbl">Qué es el diagnóstico nítido</p>
     <h2 class="h2">EN UNA HORA CONMIGO DEFINIMOS HACIA DÓNDE TENÉS QUE IR.</h2>
     <p class="body-text" style="margin-bottom:1.25rem;">Antes de la sesión, analizamos tu cuenta con el equipo y hacemos un diagnóstico específico para tu caso.</p>
@@ -373,7 +477,7 @@
   <hr class="div">
 
   <!-- PASOS -->
-  <section class="sec">
+  <section class="sec reveal">
     <p class="sec-lbl">Cómo funciona</p>
     <h2 class="h2">CUATRO PASOS</h2>
     <div class="steps">
@@ -411,7 +515,7 @@
   <hr class="div">
 
   <!-- PARA QUIÉN -->
-  <section class="sec">
+  <section class="sec reveal">
     <p class="sec-lbl">Para quién es</p>
     <div class="fw-block">
       <p class="fw-lbl">Para vos si</p>
@@ -426,7 +530,7 @@
   <hr class="div">
 
   <!-- PRECIO -->
-  <section class="sec">
+  <section class="sec reveal">
     <p class="sec-lbl">Inversión</p>
     <div class="price-block">
       <p class="price-amt"><sup>€</sup>197</p>
@@ -440,7 +544,7 @@
   <hr class="div">
 
   <!-- FAQ -->
-  <section class="sec">
+  <section class="sec reveal">
     <p class="sec-lbl">Preguntas frecuentes</p>
     <div class="faq-item">
       <p class="faq-q">¿Qué pasa si arranco de cero seguidores?</p>
@@ -473,5 +577,53 @@
   </div>
 
 </div>
+
+<script>
+  // ── Contador animado al hacer scroll ──
+  function animateCounter(el) {
+    const target = parseFloat(el.dataset.target);
+    const decimals = parseInt(el.dataset.decimals) || 0;
+    const duration = 1800;
+    const start = performance.now();
+    function step(now) {
+      const progress = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const value = target * eased;
+      el.textContent = decimals > 0 ? value.toFixed(decimals) : Math.round(value);
+      if (progress < 1) requestAnimationFrame(step);
+      else el.textContent = decimals > 0 ? target.toFixed(decimals) : target;
+    }
+    requestAnimationFrame(step);
+  }
+
+  // ── Scroll reveal ──
+  const reveals = document.querySelectorAll('.reveal');
+  let countersTriggered = false;
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        if (!countersTriggered && entry.target.classList.contains('proof-section')) {
+          countersTriggered = true;
+          document.querySelectorAll('.counter').forEach(c => animateCounter(c));
+        }
+      }
+    });
+  }, { threshold: 0.1 });
+
+  reveals.forEach(el => observer.observe(el));
+
+  // ── 3D tilt en cards ──
+  document.querySelectorAll('.proof-card').forEach(card => {
+    card.addEventListener('mousemove', e => {
+      const rect = card.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width - 0.5;
+      const y = (e.clientY - rect.top) / rect.height - 0.5;
+      card.style.transform = `translateY(-4px) rotateX(${-y * 5}deg) rotateY(${x * 5}deg)`;
+    });
+    card.addEventListener('mouseleave', () => { card.style.transform = ''; });
+  });
+</script>
 </body>
 </html>
