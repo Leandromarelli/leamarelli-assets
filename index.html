@@ -92,7 +92,7 @@
       animation: shimmer 3s infinite;
     }
     @keyframes shimmer { 0% { left: -75%; } 60%, 100% { left: 125%; } }
-    .price-note { font-size: 12px; color: #4a4a48; text-align: center; margin-top: 0.65rem; }
+    .price-note { font-size: 12px; color: #4a4a48; text-align: left; margin-top: 0.65rem; }
 
     /* ── DIVIDER ── */
     .div { border: none; border-top: 0.5px solid var(--border); margin: 0 1.5rem; }
@@ -130,10 +130,11 @@
     .proof-img-wrap img {
       width: 100%;
       display: block;
-      transition: filter 0.4s ease;
+      transition: filter 0.4s ease, transform 0.4s ease;
     }
     .proof-card:hover .proof-img-wrap img {
-      filter: brightness(0.6);
+      filter: brightness(1.08) contrast(1.04) saturate(1.1);
+      transform: scale(1.025);
     }
     /* Zona iluminada al hover — número clave */
     .proof-highlight {
@@ -144,7 +145,8 @@
       pointer-events: none;
       transition: box-shadow 0.4s ease;
     }
-    .proof-card:hover .proof-highlight {
+    .proof-card:hover .proof-highlight { display: none; }/* old */
+    .proof-card-DISABLED:hover .proof-highlight {
       box-shadow: 0 0 0 2000px rgba(0,0,0,0.55), 0 0 24px 8px rgba(var(--accent-rgb), 0.25);
     }
 
@@ -200,7 +202,8 @@
     .spark-dot { fill: var(--accent); animation: pulse-dot 2s ease-in-out infinite; }
     @keyframes pulse-dot { 0%,100%{r:2.5;opacity:1} 50%{r:4;opacity:.5} }
 
-    .proof-note { font-size: 13px; color: var(--muted); text-align: center; margin-top: 1rem; line-height: 1.6; }
+    .proof-note { font-size: 13px; color: var(--muted); text-align: left; margin-top: 1rem; line-height: 1.6; cursor: default; transition: color 0.25s ease, text-shadow 0.25s ease; }
+    .proof-note:hover { color: var(--text2); text-shadow: 0 0 18px rgba(var(--accent-rgb), 0.35); }
 
     /* ── SECTIONS ── */
     .sec { padding: 2rem 1.5rem; }
