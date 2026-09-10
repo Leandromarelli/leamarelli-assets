@@ -118,20 +118,30 @@
     /* ── PROOF SECTION ── */
     .proof-section { padding: 1.5rem 1.5rem 1.75rem; }
 
+    .proof-marquee {
+      overflow: hidden;
+      width: 100%;
+      -webkit-mask-image: linear-gradient(to right, transparent, #000 5%, #000 95%, transparent);
+      mask-image: linear-gradient(to right, transparent, #000 5%, #000 95%, transparent);
+    }
+
     .proof-grid {
       display: flex;
       flex-direction: row;
       gap: 0.65rem;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      -webkit-overflow-scrolling: touch;
-      padding-bottom: 0.25rem;
+      width: max-content;
+      animation: proof-scroll 26s linear infinite;
+    }
+    .proof-marquee:hover .proof-grid { animation-play-state: paused; }
+
+    @keyframes proof-scroll {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
     }
 
     .proof-card {
       flex: 0 0 108px;
       width: 108px;
-      scroll-snap-align: start;
       border-radius: 10px;
       overflow: hidden;
       border: 0.5px solid var(--border2);
@@ -484,70 +494,133 @@
   <!-- PRUEBA SOCIAL -->
   <section class="proof-section reveal">
     <p class="sec-lbl">Casos reales · sin pagar publicidad</p>
-    <div class="proof-grid">
+    <div class="proof-marquee">
+      <div class="proof-grid">
 
-      <div class="proof-card">
-        <div class="proof-img-wrap">
-          <img src="framed1.jpg" alt="6.1M visualizaciones en Instagram" loading="lazy">
+        <div class="proof-card">
+          <div class="proof-img-wrap">
+            <img src="framed1.jpg" alt="6.1M visualizaciones en Instagram" loading="lazy">
+          </div>
+          <div class="proof-socle">
+            <span class="socle-platform">IG</span>
+            <span class="socle-big"><span class="counter" data-target="6.1" data-decimals="1">0</span><span class="unit">M</span></span>
+          </div>
         </div>
-        <div class="proof-socle">
-          <span class="socle-platform">IG</span>
-          <span class="socle-big"><span class="counter" data-target="6.1" data-decimals="1">0</span><span class="unit">M</span></span>
+
+        <div class="proof-card">
+          <div class="proof-img-wrap">
+            <img src="framed2.jpg" alt="6.4M visualizaciones — 138K likes" loading="lazy">
+          </div>
+          <div class="proof-socle">
+            <span class="socle-platform">IG</span>
+            <span class="socle-big"><span class="counter" data-target="6.4" data-decimals="1">0</span><span class="unit">M</span></span>
+          </div>
         </div>
+
+        <div class="proof-card">
+          <div class="proof-img-wrap">
+            <img src="framed5.jpg" alt="1M visualizaciones en TikTok" loading="lazy">
+          </div>
+          <div class="proof-socle">
+            <span class="socle-platform">TikTok</span>
+            <span class="socle-big"><span class="counter" data-target="1" data-decimals="0">0</span><span class="unit">M</span></span>
+          </div>
+        </div>
+
+        <div class="proof-card">
+          <div class="proof-img-wrap">
+            <img src="maheona1.png" alt="843 mil visualizaciones — Tipos de amuletos" loading="lazy" class="img-bottom">
+          </div>
+          <div class="proof-socle">
+            <span class="socle-platform">IG</span>
+            <span class="socle-big"><span class="counter" data-target="843" data-decimals="0">0</span><span class="unit">K</span></span>
+          </div>
+        </div>
+
+        <div class="proof-card">
+          <div class="proof-img-wrap">
+            <img src="maheona%203.png" alt="346 mil visualizaciones — Ya empiezo" loading="lazy" class="img-bottom">
+          </div>
+          <div class="proof-socle">
+            <span class="socle-platform">IG</span>
+            <span class="socle-big"><span class="counter" data-target="346" data-decimals="0">0</span><span class="unit">K</span></span>
+          </div>
+        </div>
+
+        <div class="proof-card">
+          <div class="proof-img-wrap">
+            <img src="maheona%202.png" alt="171 mil visualizaciones — Va a salir" loading="lazy" class="img-bottom">
+          </div>
+          <div class="proof-socle">
+            <span class="socle-platform">IG</span>
+            <span class="socle-big"><span class="counter" data-target="171" data-decimals="0">0</span><span class="unit">K</span></span>
+          </div>
+        </div>
+
+        <!-- duplicado para loop continuo -->
+        <div class="proof-card" aria-hidden="true">
+          <div class="proof-img-wrap">
+            <img src="framed1.jpg" alt="" loading="lazy">
+          </div>
+          <div class="proof-socle">
+            <span class="socle-platform">IG</span>
+            <span class="socle-big">6.1<span class="unit">M</span></span>
+          </div>
+        </div>
+
+        <div class="proof-card" aria-hidden="true">
+          <div class="proof-img-wrap">
+            <img src="framed2.jpg" alt="" loading="lazy">
+          </div>
+          <div class="proof-socle">
+            <span class="socle-platform">IG</span>
+            <span class="socle-big">6.4<span class="unit">M</span></span>
+          </div>
+        </div>
+
+        <div class="proof-card" aria-hidden="true">
+          <div class="proof-img-wrap">
+            <img src="framed5.jpg" alt="" loading="lazy">
+          </div>
+          <div class="proof-socle">
+            <span class="socle-platform">TikTok</span>
+            <span class="socle-big">1<span class="unit">M</span></span>
+          </div>
+        </div>
+
+        <div class="proof-card" aria-hidden="true">
+          <div class="proof-img-wrap">
+            <img src="maheona1.png" alt="" loading="lazy" class="img-bottom">
+          </div>
+          <div class="proof-socle">
+            <span class="socle-platform">IG</span>
+            <span class="socle-big">843<span class="unit">K</span></span>
+          </div>
+        </div>
+
+        <div class="proof-card" aria-hidden="true">
+          <div class="proof-img-wrap">
+            <img src="maheona%203.png" alt="" loading="lazy" class="img-bottom">
+          </div>
+          <div class="proof-socle">
+            <span class="socle-platform">IG</span>
+            <span class="socle-big">346<span class="unit">K</span></span>
+          </div>
+        </div>
+
+        <div class="proof-card" aria-hidden="true">
+          <div class="proof-img-wrap">
+            <img src="maheona%202.png" alt="" loading="lazy" class="img-bottom">
+          </div>
+          <div class="proof-socle">
+            <span class="socle-platform">IG</span>
+            <span class="socle-big">171<span class="unit">K</span></span>
+          </div>
+        </div>
+
       </div>
-
-      <div class="proof-card">
-        <div class="proof-img-wrap">
-          <img src="framed2.jpg" alt="6.4M visualizaciones — 138K likes" loading="lazy">
-        </div>
-        <div class="proof-socle">
-          <span class="socle-platform">IG</span>
-          <span class="socle-big"><span class="counter" data-target="6.4" data-decimals="1">0</span><span class="unit">M</span></span>
-        </div>
-      </div>
-
-      <div class="proof-card">
-        <div class="proof-img-wrap">
-          <img src="framed5.jpg" alt="1M visualizaciones en TikTok" loading="lazy">
-        </div>
-        <div class="proof-socle">
-          <span class="socle-platform">TikTok</span>
-          <span class="socle-big"><span class="counter" data-target="1" data-decimals="0">0</span><span class="unit">M</span></span>
-        </div>
-      </div>
-
-      <div class="proof-card">
-        <div class="proof-img-wrap">
-          <img src="maheona%201.png" alt="843 mil visualizaciones — Tipos de amuletos" loading="lazy" class="img-bottom">
-        </div>
-        <div class="proof-socle">
-          <span class="socle-platform">IG</span>
-          <span class="socle-big"><span class="counter" data-target="843" data-decimals="0">0</span><span class="unit">K</span></span>
-        </div>
-      </div>
-
-      <div class="proof-card">
-        <div class="proof-img-wrap">
-          <img src="maheona%203.png" alt="346 mil visualizaciones — Ya empiezo" loading="lazy" class="img-bottom">
-        </div>
-        <div class="proof-socle">
-          <span class="socle-platform">IG</span>
-          <span class="socle-big"><span class="counter" data-target="346" data-decimals="0">0</span><span class="unit">K</span></span>
-        </div>
-      </div>
-
-      <div class="proof-card">
-        <div class="proof-img-wrap">
-          <img src="maheona%202.png" alt="171 mil visualizaciones — Va a salir" loading="lazy" class="img-bottom">
-        </div>
-        <div class="proof-socle">
-          <span class="socle-platform">IG</span>
-          <span class="socle-big"><span class="counter" data-target="171" data-decimals="0">0</span><span class="unit">K</span></span>
-        </div>
-      </div>
-
     </div>
-    <p class="proof-note">Resultados de mi cuenta @leamarelli y de @maheona.eu</p>
+    <p class="proof-note">Resultados de mi cuenta @leamarelli y de @maheona.eu — @maheona.eu llegó a 45K seguidores en su primer mes.</p>
   </section>
 
   <hr class="div">
