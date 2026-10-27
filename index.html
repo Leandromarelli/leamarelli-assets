@@ -26,10 +26,11 @@
 
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1080" width="1080" height="1080"%3E%3Crect width="1080" height="1080" fill="#F2EEE7"/%3E%3Cg fill="#0B0B0B" transform="translate%28540 540%29 scale%281.45%29 translate%28-627.0 -489.0%29"%3E%3Cpath d="M436 346 H468 V590 H622 V603 H436 ZM538.0 414 H550.0 V575 H538.0 ZM540 414 H566 L679.6 545 L786 417.2 V435.2 L669.1 576.1 L540 430 ZM786 414 H818 V632 H786 Z"/%3E%3C/g%3E%3C/svg%3E">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="preload" href="inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="montserrat-latin.woff2" as="font" type="font/woff2" crossorigin>
   <style>
+    @font-face { font-family: 'Inter'; src: url('inter-latin.woff2') format('woff2'); font-weight: 400 600; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'Montserrat'; src: url('montserrat-latin.woff2') format('woff2'); font-weight: 400 600; font-style: normal; font-display: swap; }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
@@ -710,7 +711,7 @@
 
   <!-- LEGAL -->
   <div class="legal">
-    <p>© 2026 Lea Marelli. Al reservar la llamada aceptás los <a href="#">términos de servicio</a> y la <a href="#">política de privacidad</a>.</p>
+    <p>© 2026 Lea Marelli · <a href="aviso-legal.html">Aviso legal</a> · <a href="privacidad.html">Privacidad y cookies</a></p>
   </div>
 
 </div>
